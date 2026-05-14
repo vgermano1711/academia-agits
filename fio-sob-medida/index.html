@@ -24,6 +24,9 @@
 </head>
 <body>
 
+  <!-- ── Scroll Progress Bar ── -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ── Navigation ── -->
   <nav class="nav" role="navigation" aria-label="Navegação principal">
     <div class="nav-inner">
@@ -37,6 +40,7 @@
         <li><a class="nav-link" href="#chat">Diagnóstico</a></li>
         <li><a class="nav-link" href="#dashboard-section">Cronograma</a></li>
         <li><a class="nav-link" href="#marketplace-section">Marketplace</a></li>
+        <li><a class="nav-link" href="#testimonials">Depoimentos</a></li>
         <li><a class="nav-link" href="#brand-register">Seja Parceira</a></li>
         <li>
           <a class="nav-link nav-cta" href="#chat" data-scroll-to="chat">
@@ -54,14 +58,18 @@
   <!-- ── Hero ── -->
   <section id="hero" class="hero" aria-labelledby="hero-title">
     <div class="hero-parallax" aria-hidden="true"></div>
+    <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
 
     <div class="hero-content">
       <div class="hero-text">
         <span class="hero-tag">✦ IA para cuidados capilares</span>
 
         <h1 class="hero-title" id="hero-title">
-          Seu cabelo merece<br />
-          cuidado <em>sob medida</em>
+          <span class="hero-title-line1">Seu cabelo merece</span><br />
+          cuidado <em id="typewriter-target">sob medida</em>
         </h1>
 
         <p class="hero-subtitle">
@@ -96,24 +104,44 @@
       </div>
 
       <div class="hero-visual" aria-hidden="true">
-        <div class="hero-circle">
-          <div class="hero-circle-content">
-            <div class="hero-circle-emoji">💆‍♀️</div>
-            <div class="hero-circle-text">Mariana, sua consultora</div>
+        <div class="hero-visual-wrap" id="hero-tilt">
+          <div class="hero-ring hero-ring-outer"></div>
+          <div class="hero-ring hero-ring-mid"></div>
+          <div class="hero-circle">
+            <div class="hero-circle-glow"></div>
+            <div class="hero-circle-content">
+              <div class="hero-avatar-wrap">
+                <img
+                  src="https://api.dicebear.com/7.x/adventurer/svg?seed=Mariana&backgroundColor=F4B8C1"
+                  alt="Mariana consultora"
+                  class="hero-avatar-img"
+                  loading="eager"
+                />
+              </div>
+              <div class="hero-circle-text">Mariana, sua consultora</div>
+              <div class="hero-circle-badge">
+                <span class="online-dot"></span>
+                Online agora
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="float-element">
-          <div class="float-dot"></div>
-          <span>Diagnóstico em minutos</span>
-        </div>
-        <div class="float-element">
-          <div class="float-dot gold"></div>
-          <span>Produtos selecionados</span>
-        </div>
-        <div class="float-element">
-          <div class="float-dot green"></div>
-          <span>Cronograma exclusivo</span>
+          <div class="float-element float-el-1">
+            <div class="float-dot"></div>
+            <span>Diagnóstico em minutos</span>
+          </div>
+          <div class="float-element float-el-2">
+            <div class="float-dot gold"></div>
+            <span>Produtos selecionados</span>
+          </div>
+          <div class="float-element float-el-3">
+            <div class="float-dot green"></div>
+            <span>Cronograma exclusivo</span>
+          </div>
+          <div class="float-element float-el-4">
+            <span class="float-star">★</span>
+            <span>4.9 · 12.400 clientes</span>
+          </div>
         </div>
       </div>
     </div>
@@ -365,6 +393,104 @@
     </div>
   </section>
 
+  <!-- ── Testimonials ── -->
+  <section id="testimonials" aria-labelledby="testimonials-title">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-tag">✦ O que dizem</span>
+        <h2 class="section-title reveal-on-scroll" id="testimonials-title">
+          Fios transformados,<br /><em>vidas renovadas</em>
+        </h2>
+        <p class="section-desc reveal-on-scroll">
+          Mais de 12.400 mulheres já descobriram o poder de um cuidado capilar realmente personalizado.
+        </p>
+      </div>
+
+      <div class="testimonials-track-wrap">
+        <div class="testimonials-track" id="testimonials-track">
+          <!-- Row 1 -->
+          <div class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"A Mariana identificou exatamente o que meu cabelo precisava. Em 3 semanas de cronograma, meus cachos voltaram a ser definidos!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #F4B8C1, #E8889A)">A</div>
+              <div>
+                <div class="testimonial-name">Ana Clara M.</div>
+                <div class="testimonial-type">Cabelo cacheado · Hidratação</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Nunca entendi meu cabelo tão bem. O diagnóstico foi cirúrgico e os produtos recomendados são incríveis. Vale cada centavo!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #C9A96E, #E8D5B0)">J</div>
+              <div>
+                <div class="testimonial-name">Juliana P.</div>
+                <div class="testimonial-type">Cabelo liso · Reconstrução</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Minha queda capilar diminuiu 70% em 6 semanas! O protocolo da Mariana é baseado em ciência de verdade."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #7AB87A, #A8D5A8)">F</div>
+              <div>
+                <div class="testimonial-name">Fernanda L.</div>
+                <div class="testimonial-type">Cabelo crespo · Anti-queda</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Finalmente parei de gastar em produtos errados. O marketplace é selecionado especialmente para o meu tipo de fio!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #9B7ED4, #C4B0E8)">B</div>
+              <div>
+                <div class="testimonial-name">Beatriz R.</div>
+                <div class="testimonial-type">Cabelo ondulado · Nutrição</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"A consultoria é como ter uma dermatologista capilar no bolso. Super acessível e incrivelmente precisa. Recomendo demais!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #E8889A, #F4B8C1)">M</div>
+              <div>
+                <div class="testimonial-name">Mariana C.</div>
+                <div class="testimonial-type">Cabelo cacheado · Crescimento</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal-on-scroll">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Em 2 meses meu cabelo danificado por química voltou a ter brilho e elasticidade. O cronograma de reconstrução é perfeito!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #6B9FD4, #A8C4E8)">T</div>
+              <div>
+                <div class="testimonial-name">Tatiane S.</div>
+                <div class="testimonial-type">Cabelo liso · Reconstrução</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials-nav" aria-label="Navegar depoimentos">
+          <button class="t-nav-btn" id="t-prev" aria-label="Anterior">‹</button>
+          <div class="t-dots" id="t-dots"></div>
+          <button class="t-nav-btn" id="t-next" aria-label="Próximo">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── Brand Registration ── -->
   <section id="brand-register" aria-labelledby="brand-register-title">
     <div class="section-inner">
@@ -548,6 +674,7 @@
 
   <!-- ── Scripts ── -->
   <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/animations.js"></script>
 
   <script>
     // PWA Service Worker registration

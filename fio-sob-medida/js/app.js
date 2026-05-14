@@ -8,37 +8,92 @@ import { renderDashboard } from './dashboard.js';
 import { renderMarketplace } from './marketplace.js';
 import { HAIR_TYPES, CONDITIONS, OBJECTIVES, TIME_OPTIONS, BRANDS, Storage } from './data.js';
 
-// ── Parallax Engine (60% speed ratio) ──────────────────────
-const PARALLAX_RATIO = 0.6;
-
-function initParallax() {
-  const hero = document.querySelector('.hero-parallax');
-  if (!hero) return;
-
-  let ticking = false;
+// ── Scroll Progress Bar ───────────────────────────────────
+function initScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        hero.style.transform = `translateY(${scrollY * PARALLAX_RATIO}px)`;
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
-  // Floating elements
-  const floaters = document.querySelectorAll('.float-element');
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    floaters.forEach((el, i) => {
-      const dir = i % 2 === 0 ? 1 : -1;
-      el.style.transform = `translateY(${scrollY * 0.15 * dir}px) rotate(${scrollY * 0.02 * dir}deg)`;
-    });
+    const scrolled = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = `${(scrolled / max) * 100}%`;
   }, { passive: true });
 }
 
-// ── Intersection Observer for section reveals ───────────────
+// ── Multi-Layer Parallax Engine ────────────────────────────
+function initParallax() {
+  const bg = document.querySelector('.hero-parallax');
+  const orbs = document.querySelectorAll('.hero-orb');
+  const heroVisual = document.querySelector('.hero-visual-wrap');
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+
+      // Background layer — slowest
+      if (bg) bg.style.transform = `translateY(${y * 0.55}px)`;
+
+      // Orbs at different speeds
+      orbs.forEach((orb, i) => {
+        const speeds = [0.25, 0.35, 0.18];
+        const dirs = [1, -1, 1];
+        orb.style.transform = `translateY(${y * speeds[i] * dirs[i]}px)`;
+      });
+
+      // Hero visual — slight inverse parallax for depth
+      if (heroVisual && y < window.innerHeight) {
+        heroVisual.style.transform = `translateY(${y * -0.08}px)`;
+      }
+
+      ticking = false;
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+// ── Mouse Parallax (cursor tracking on hero) ───────────────
+function initMouseParallax() {
+  const hero = document.getElementById('hero');
+  const tiltTarget = document.getElementById('hero-tilt');
+  const floaters = document.querySelectorAll('.float-element');
+  if (!hero || !tiltTarget) return;
+
+  let mouseX = 0, mouseY = 0;
+  let currentX = 0, currentY = 0;
+
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    mouseX = (e.clientX - rect.left - rect.width / 2) / rect.width;
+    mouseY = (e.clientY - rect.top - rect.height / 2) / rect.height;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    mouseX = 0; mouseY = 0;
+  });
+
+  function animateMouse() {
+    currentX += (mouseX - currentX) * 0.06;
+    currentY += (mouseY - currentY) * 0.06;
+
+    const tiltX = currentY * 14;
+    const tiltY = currentX * -14;
+    tiltTarget.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(${window.scrollY * -0.08}px)`;
+
+    floaters.forEach((el, i) => {
+      const strength = (i + 1) * 8;
+      const dir = i % 2 === 0 ? 1 : -1;
+      el.style.transform = `translate(${currentX * strength * dir}px, ${currentY * strength}px)`;
+    });
+
+    requestAnimationFrame(animateMouse);
+  }
+  animateMouse();
+}
+
+// ── Intersection Observer with stagger support ─────────────
 function initRevealAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -47,9 +102,18 @@ function initRevealAnimations() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal-on-scroll').forEach((el, i) => {
+    // Apply stagger delay to sibling groups
+    const parent = el.parentElement;
+    const siblings = parent ? [...parent.querySelectorAll('.reveal-on-scroll')] : [];
+    const idx = siblings.indexOf(el);
+    if (idx > 0 && idx < 7) {
+      el.classList.add(`stagger-${idx}`);
+    }
+    observer.observe(el);
+  });
 }
 
 // ── Navigation ──────────────────────────────────────────────
@@ -479,13 +543,66 @@ function initCounters() {
   counters.forEach(c => observer.observe(c));
 }
 
+// ── Ripple Effect ────────────────────────────────────────────
+function initRipple() {
+  const targets = document.querySelectorAll(
+    '.btn-primary, .btn-secondary, .nav-cta, #start-chat-btn, .btn-form-submit, #send-btn'
+  );
+  targets.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(rect.width, rect.height);
+      ripple.className = 'ripple';
+      ripple.style.cssText = `
+        width: ${size}px; height: ${size}px;
+        left: ${e.clientX - rect.left - size / 2}px;
+        top:  ${e.clientY - rect.top - size / 2}px;
+      `;
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+  });
+}
+
+// ── 3D Tilt on Feature Cards ─────────────────────────────────
+function initCardTilt() {
+  document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(600px) rotateX(${-y * 10}deg) rotateY(${x * 10}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(800px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
 // ── Init ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  initScrollProgress();
   initParallax();
+  initMouseParallax();
   initRevealAnimations();
   initNavigation();
   initChat();
   initBrandForm();
   initCTA();
   initCounters();
+  initRipple();
+  initCardTilt();
 });
