@@ -1,49 +1,59 @@
 # 🏋️ Academia Agits — Site Institucional
 
-Site institucional desenvolvido para a **Academia Agits**, com foco em apresentar serviços, planos e facilitar o contato com alunos e potenciais clientes.
-
----
-
-## 🔗 Acesse o Site
-
-> 🌐 [academiaagits.com.br](https://academiaagits.com.br)
+> Landing page institucional de alta conversão para academia, desenvolvida com código manual, design customizado no Figma e foco em UX.
 
 ---
 
 ## 📌 Sobre o Projeto
 
-Desenvolvimento de presença digital completa para a Academia Agits:
+Site institucional desenvolvido para a **Academia Agits** com foco em conversão de visitantes em alunos. Código 100% manual sem frameworks desnecessários, design personalizado no Figma, responsivo e otimizado para SEO. Interface clara, objetiva e orientada a resultados.
 
-- 💪 Modalidades e serviços da academia
-- 📋 Planos disponíveis com valores
-- 📍 Localização e horários de funcionamento
-- 📞 Formulário / botão de contato direto
+🔗 **Acesse:** [academiaagits.com.br](https://academiaagits.com.br)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ⚡ Funcionalidades
 
-| Tecnologia | Uso |
-|-----------|-----|
-| PHP | Backend e renderização das páginas |
-| HTML5 / CSS3 | Estrutura e estilização do front-end |
-
----
-
-## 🚀 Como Rodar Localmente
-
-```bash
-git clone https://github.com/vgermano1711/https-academiaagits.com.br-.git
-cd https-academiaagits.com.br-
-php -S localhost:8000
-```
-
-Acesse `http://localhost:8000` no navegador.
+- ✅ Layout responsivo (mobile-first)
+- ✅ Seção de planos e serviços
+- ✅ Formulário de contato integrado ao WhatsApp
+- ✅ Galeria de fotos da academia
+- ✅ SEO on-page otimizado
+- ✅ Carregamento rápido (sem bibliotecas pesadas)
+- ✅ CTA estratégicos para conversão
 
 ---
 
-## 📬 Desenvolvido por
+## 🛠️ Tecnologias
 
-**Victor Germano** — Desenvolvedor Web
+| Camada | Tecnologia |
+|---|---|
+| Estrutura | HTML5 semântico |
+| Estilo | CSS3 (Flexbox, Grid, animações) |
+| Interatividade | JavaScript puro (ES6+) |
+| Design | Figma |
+| Deploy | Hospedagem compartilhada |
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-germano-65787b2b1/)
+---
+
+## 📊 Resultados
+
+- Interface clara e objetiva que facilita o contato de novos alunos
+- Carregamento otimizado sem dependências externas
+- Design customizado alinhado à identidade visual da academia
+
+---
+
+## 👨‍💻 Autor
+
+**Victor Germano** — Desenvolvedor Web Full Stack · IA & Automação
+
+- 🌐 [vgermano1711.github.io/portfolio-germano-dev](https://vgermano1711.github.io/portfolio-germano-dev)
+- 📧 dev.germanoo@gmail.com
+- 💼 [linkedin.com/in/victor-germano-65787b2b1](https://linkedin.com/in/victor-germano-65787b2b1)
+
+---
+
+## 📄 Licença
+
+MIT License
