@@ -1,30 +1,30 @@
-# 🏋️ Academia Agits — Site Institucional
+# Academia Agits — Site Institucional
 
 > Landing page institucional de alta conversão para academia, desenvolvida com código manual, design customizado no Figma e foco em UX.
 
 ---
 
-## 📌 Sobre o Projeto
+## Sobre o Projeto
 
-Site institucional desenvolvido para a **Academia Agits** com foco em conversão de visitantes em alunos. Código 100% manual sem frameworks desnecessários, design personalizado no Figma, responsivo e otimizado para SEO. Interface clara, objetiva e orientada a resultados.
+Site institucional desenvolvido para a Academia Agits com foco em conversão de visitantes em alunos. Código 100% manual sem frameworks desnecessários, design personalizado no Figma, responsivo e otimizado para SEO. Interface clara, objetiva e orientada a resultados.
 
-🔗 **Acesse:** [academiaagits.com.br](https://academiaagits.com.br)
-
----
-
-## ⚡ Funcionalidades
-
-- ✅ Layout responsivo (mobile-first)
-- ✅ Seção de planos e serviços
-- ✅ Formulário de contato integrado ao WhatsApp
-- ✅ Galeria de fotos da academia
-- ✅ SEO on-page otimizado
-- ✅ Carregamento rápido (sem bibliotecas pesadas)
-- ✅ CTA estratégicos para conversão
+Acesse: [academiaagits.com.br](https://academiaagits.com.br)
 
 ---
 
-## 🛠️ Tecnologias
+## Funcionalidades
+
+- Layout responsivo (mobile-first)
+- Seção de planos e serviços
+- Formulário de contato integrado ao WhatsApp
+- Galeria de fotos da academia
+- SEO on-page otimizado
+- Carregamento rápido, sem bibliotecas pesadas
+- CTAs estratégicos para conversão
+
+---
+
+## Tecnologias
 
 | Camada | Tecnologia |
 |---|---|
@@ -32,11 +32,11 @@ Site institucional desenvolvido para a **Academia Agits** com foco em conversão
 | Estilo | CSS3 (Flexbox, Grid, animações) |
 | Interatividade | JavaScript puro (ES6+) |
 | Design | Figma |
-| Deploy | Hospedagem compartilhada |
+| Deploy | Hospedagem compartilhada (Hostinger, deploy via Git) |
 
 ---
 
-## 📊 Resultados
+## Resultados
 
 - Interface clara e objetiva que facilita o contato de novos alunos
 - Carregamento otimizado sem dependências externas
@@ -44,16 +44,16 @@ Site institucional desenvolvido para a **Academia Agits** com foco em conversão
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
-**Victor Germano** — Desenvolvedor Web Full Stack · IA & Automação
+**Victor Germano** — Desenvolvedor Web Full Stack, IA & Automação
 
-- 🌐 [vgermano1711.github.io/portfolio-germano-dev](https://vgermano1711.github.io/portfolio-germano-dev)
-- 📧 dev.germanoo@gmail.com
-- 💼 [linkedin.com/in/victor-germano-65787b2b1](https://linkedin.com/in/victor-germano-65787b2b1)
+- Portfólio: [vgermano1711.github.io/portfolio-germano-dev](https://vgermano1711.github.io/portfolio-germano-dev)
+- E-mail: dev.germanoo@gmail.com
+- LinkedIn: [linkedin.com/in/victor-germano-65787b2b1](https://linkedin.com/in/victor-germano-65787b2b1)
 
 ---
 
-## 📄 Licença
+## Licença
 
 MIT License
