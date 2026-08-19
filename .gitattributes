@@ -1,0 +1,24 @@
+# WordPress core and third-party plugins/themes bundled by the hosting
+# provider (Hostinger). Marked as vendored so GitHub's language statistics
+# and diffs reflect the fact that none of this was authored in this
+# repository — nothing here is custom code.
+
+wp-admin/**       linguist-vendored
+wp-includes/**    linguist-vendored
+wp-*.php          linguist-vendored
+xmlrpc.php        linguist-vendored
+index.php         linguist-vendored
+license.txt       linguist-vendored
+readme.html       linguist-vendored
+
+wp-content/themes/twentytwentythree/**   linguist-vendored
+wp-content/themes/twentytwentyfour/**    linguist-vendored
+wp-content/themes/twentytwentyfive/**    linguist-vendored
+wp-content/themes/index.php              linguist-vendored
+
+wp-content/plugins/hostinger/**                 linguist-vendored
+wp-content/plugins/hostinger-ai-assistant/**    linguist-vendored
+wp-content/plugins/hostinger-easy-onboarding/** linguist-vendored
+wp-content/plugins/hostinger-reach/**           linguist-vendored
+wp-content/plugins/litespeed-cache/**           linguist-vendored
+wp-content/plugins/index.php                    linguist-vendored
